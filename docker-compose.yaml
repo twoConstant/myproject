@@ -41,13 +41,13 @@ services:
     volumes:
       - db-data:/var/lib/mysql
 
-  redis:
-    image: redis:alpine
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis-data:/data
+  # redis:
+  #   image: redis:alpine
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis-data:/data
 
 volumes:
   db-data:
-  redis-data:
+  # redis-data:
