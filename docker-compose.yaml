@@ -7,8 +7,13 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    env_file:
-      - .env
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://ubuntu@i10d207.p.ssafy.io/yourdatabase
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      MYSQL_HOST: db
     depends_on:
       - db
       - redis
@@ -19,15 +24,18 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
-    env_file:
-      - .env
+    environment:
+      NODE_ENV: development
     depends_on:
       - backend
 
   db:
     image: mysql:8.3.0
-    env_file:
-      - .env
+    environment:
+      MYSQL_DATABASE: jpapractice
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 0000
+      MYSQL_ROOT_PASSWORD: 0000
     ports:
       - "3306:3306"
     volumes:
